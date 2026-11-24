@@ -1,0 +1,312 @@
+{
+  "city_to_country": {
+    "stockholm": "Sweden",
+    "gothenburg": "Sweden",
+    "göteborg": "Sweden",
+    "malmö": "Sweden",
+    "luleå": "Sweden",
+    "umeå": "Sweden",
+    "östersund": "Sweden",
+    "visby": "Sweden",
+    "ronneby": "Sweden",
+    "kiruna": "Sweden",
+    "skellefteå": "Sweden",
+    "sundsvall": "Sweden",
+    "oslo": "Norway",
+    "bergen": "Norway",
+    "trondheim": "Norway",
+    "stavanger": "Norway",
+    "tromsø": "Norway",
+    "copenhagen": "Denmark",
+    "köpenhamn": "Denmark",
+    "billund": "Denmark",
+    "aalborg": "Denmark",
+    "helsinki": "Finland",
+    "helsingfors": "Finland",
+    "turku": "Finland",
+    "rovaniemi": "Finland",
+    "reykjavik": "Iceland",
+    "keflavik": "Iceland",
+    "london": "United Kingdom",
+    "manchester": "United Kingdom",
+    "edinburgh": "United Kingdom",
+    "birmingham": "United Kingdom",
+    "paris": "France",
+    "paris bva": "France",
+    "nice": "France",
+    "lyon": "France",
+    "marseille": "France",
+    "amsterdam": "Netherlands",
+    "rotterdam": "Netherlands",
+    "eindhoven": "Netherlands",
+    "brussels": "Belgium",
+    "bryssel": "Belgium",
+    "antwerp": "Belgium",
+    "berlin": "Germany",
+    "frankfurt": "Germany",
+    "munich": "Germany",
+    "münchen": "Germany",
+    "hamburg": "Germany",
+    "düsseldorf": "Germany",
+    "vienna": "Austria",
+    "wien": "Austria",
+    "salzburg": "Austria",
+    "innsbruck": "Austria",
+    "zurich": "Switzerland",
+    "zürich": "Switzerland",
+    "geneva": "Switzerland",
+    "genève": "Switzerland",
+    "basel": "Switzerland",
+    "madrid": "Spain",
+    "barcelona": "Spain",
+    "malaga": "Spain",
+    "málaga": "Spain",
+    "palma de mallorca": "Spain",
+    "alicante": "Spain",
+    "las palmas": "Spain",
+    "tenerife": "Spain",
+    "ibiza": "Spain",
+    "rome": "Italy",
+    "rom": "Italy",
+    "milan": "Italy",
+    "milano": "Italy",
+    "venice": "Italy",
+    "venedig": "Italy",
+    "florence": "Italy",
+    "naples": "Italy",
+    "bergamo": "Italy",
+    "lisbon": "Portugal",
+    "lissabon": "Portugal",
+    "porto": "Portugal",
+    "faro": "Portugal",
+    "funchal": "Portugal",
+    "athens": "Greece",
+    "aten": "Greece",
+    "thessaloniki": "Greece",
+    "rhodes": "Greece",
+    "rhodos": "Greece",
+    "crete": "Greece",
+    "heraklion": "Greece",
+    "chania": "Greece",
+    "tallinn": "Estonia",
+    "riga": "Latvia",
+    "vilnius": "Lithuania",
+    "kaunas": "Lithuania",
+    "warsaw": "Poland",
+    "warszawa": "Poland",
+    "krakow": "Poland",
+    "kraków": "Poland",
+    "gdansk": "Poland",
+    "gdańsk": "Poland",
+    "wroclaw": "Poland",
+    "prague": "Czech Republic",
+    "prag": "Czech Republic",
+    "budapest": "Hungary",
+    "bucharest": "Romania",
+    "belgrade": "Serbia",
+    "zagreb": "Croatia",
+    "split": "Croatia",
+    "dubrovnik": "Croatia",
+    "istanbul": "Turkey",
+    "antalya": "Turkey",
+    "izmir": "Turkey",
+    "ankara": "Turkey",
+    "dubai": "United Arab Emirates",
+    "doha": "Qatar",
+    "abu dhabi": "United Arab Emirates",
+    "bangkok": "Thailand",
+    "phuket": "Thailand",
+    "krabi": "Thailand",
+    "new york": "United States",
+    "chicago": "United States",
+    "miami": "United States",
+    "cairo": "Egypt",
+    "hurghada": "Egypt"
+  },
+  "country_to_cities": {
+    "Sweden": [
+      "Stockholm",
+      "Gothenburg",
+      "Göteborg",
+      "Malmö",
+      "Luleå",
+      "Umeå",
+      "Östersund",
+      "Visby",
+      "Ronneby",
+      "Kiruna",
+      "Skellefteå",
+      "Sundsvall"
+    ],
+    "Norway": [
+      "Oslo",
+      "Bergen",
+      "Trondheim",
+      "Stavanger",
+      "Tromsø"
+    ],
+    "Denmark": [
+      "Copenhagen",
+      "Köpenhamn",
+      "Billund",
+      "Aalborg"
+    ],
+    "Finland": [
+      "Helsinki",
+      "Helsingfors",
+      "Turku",
+      "Rovaniemi"
+    ],
+    "Iceland": [
+      "Reykjavik",
+      "Keflavik"
+    ],
+    "United Kingdom": [
+      "London",
+      "Manchester",
+      "Edinburgh",
+      "Birmingham"
+    ],
+    "France": [
+      "Paris",
+      "Paris Bva",
+      "Nice",
+      "Lyon",
+      "Marseille"
+    ],
+    "Netherlands": [
+      "Amsterdam",
+      "Rotterdam",
+      "Eindhoven"
+    ],
+    "Belgium": [
+      "Brussels",
+      "Bryssel",
+      "Antwerp"
+    ],
+    "Germany": [
+      "Berlin",
+      "Frankfurt",
+      "Munich",
+      "München",
+      "Hamburg",
+      "Düsseldorf"
+    ],
+    "Austria": [
+      "Vienna",
+      "Wien",
+      "Salzburg",
+      "Innsbruck"
+    ],
+    "Switzerland": [
+      "Zurich",
+      "Zürich",
+      "Geneva",
+      "Genève",
+      "Basel"
+    ],
+    "Spain": [
+      "Madrid",
+      "Barcelona",
+      "Malaga",
+      "Málaga",
+      "Palma De Mallorca",
+      "Alicante",
+      "Las Palmas",
+      "Tenerife",
+      "Ibiza"
+    ],
+    "Italy": [
+      "Rome",
+      "Rom",
+      "Milan",
+      "Milano",
+      "Venice",
+      "Venedig",
+      "Florence",
+      "Naples",
+      "Bergamo"
+    ],
+    "Portugal": [
+      "Lisbon",
+      "Lissabon",
+      "Porto",
+      "Faro",
+      "Funchal"
+    ],
+    "Greece": [
+      "Athens",
+      "Aten",
+      "Thessaloniki",
+      "Rhodes",
+      "Rhodos",
+      "Crete",
+      "Heraklion",
+      "Chania"
+    ],
+    "Estonia": [
+      "Tallinn"
+    ],
+    "Latvia": [
+      "Riga"
+    ],
+    "Lithuania": [
+      "Vilnius",
+      "Kaunas"
+    ],
+    "Poland": [
+      "Warsaw",
+      "Warszawa",
+      "Krakow",
+      "Kraków",
+      "Gdansk",
+      "Gdańsk",
+      "Wroclaw"
+    ],
+    "Czech Republic": [
+      "Prague",
+      "Prag"
+    ],
+    "Hungary": [
+      "Budapest"
+    ],
+    "Romania": [
+      "Bucharest"
+    ],
+    "Serbia": [
+      "Belgrade"
+    ],
+    "Croatia": [
+      "Zagreb",
+      "Split",
+      "Dubrovnik"
+    ],
+    "Turkey": [
+      "Istanbul",
+      "Antalya",
+      "Izmir",
+      "Ankara"
+    ],
+    "United Arab Emirates": [
+      "Dubai",
+      "Abu Dhabi"
+    ],
+    "Qatar": [
+      "Doha"
+    ],
+    "Thailand": [
+      "Bangkok",
+      "Phuket",
+      "Krabi"
+    ],
+    "United States": [
+      "New York",
+      "Chicago",
+      "Miami"
+    ],
+    "Egypt": [
+      "Cairo",
+      "Hurghada"
+    ]
+  }
+}
