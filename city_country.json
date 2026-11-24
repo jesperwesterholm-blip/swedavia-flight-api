@@ -121,7 +121,88 @@
     "chicago": "United States",
     "miami": "United States",
     "cairo": "Egypt",
-    "hurghada": "Egypt"
+    "hurghada": "Egypt",
+    "arlanda": "Sweden",
+    "bromma": "Sweden",
+    "landvetter": "Sweden",
+    "åre östersund": "Sweden",
+    "arvidsjaur": "Sweden",
+    "gällivare": "Sweden",
+    "halmstad": "Sweden",
+    "hemavan": "Sweden",
+    "hemavan tärnaby": "Sweden",
+    "kalmar": "Sweden",
+    "karlstad": "Sweden",
+    "kramfors": "Sweden",
+    "pajala": "Sweden",
+    "sveg": "Sweden",
+    "torsby": "Sweden",
+    "vilhelmina": "Sweden",
+    "ängelholm": "Sweden",
+    "örnsköldsvik": "Sweden",
+    "mora": "Sweden",
+    "linköping": "Sweden",
+    "örebro": "Sweden",
+    "norrköping": "Sweden",
+    "växjö": "Sweden",
+    "kristianstad": "Sweden",
+    "borlänge": "Sweden",
+    "trollhättan": "Sweden",
+    "mariehamn": "Finland",
+    "vaasa": "Finland",
+    "vasa": "Finland",
+    "åbo": "Finland",
+    "tromso": "Norway",
+    "tromsö": "Norway",
+    "aarhus": "Denmark",
+    "dublin": "Ireland",
+    "geneve": "Switzerland",
+    "charleroi": "Belgium",
+    "gran canaria": "Spain",
+    "teneriffa": "Spain",
+    "palma": "Spain",
+    "fuerteventura": "Spain",
+    "lanzarote": "Spain",
+    "sevilla": "Spain",
+    "poznan": "Poland",
+    "katowice": "Poland",
+    "skopje": "North Macedonia",
+    "tirana": "Albania",
+    "belgrad": "Serbia",
+    "banja luka": "Bosnia and Herzegovina",
+    "sarajevo": "Bosnia and Herzegovina",
+    "pristina": "Kosovo",
+    "podgorica": "Montenegro",
+    "bukarest": "Romania",
+    "sofia": "Bulgaria",
+    "varna": "Bulgaria",
+    "burgas": "Bulgaria",
+    "malta": "Malta",
+    "valletta": "Malta",
+    "luxembourg": "Luxembourg",
+    "luxemburg": "Luxembourg",
+    "larnaca": "Cyprus",
+    "paphos": "Cyprus",
+    "addis abeba": "Ethiopia",
+    "addis ababa": "Ethiopia",
+    "agadir": "Morocco",
+    "marrakech": "Morocco",
+    "casablanca": "Morocco",
+    "amman": "Jordan",
+    "beirut": "Lebanon",
+    "kairo": "Egypt",
+    "sharm el sheikh": "Egypt",
+    "tel aviv": "Israel",
+    "boa vista": "Cape Verde",
+    "sal": "Cape Verde",
+    "beijing": "China",
+    "peking": "China",
+    "shanghai": "China",
+    "tokyo": "Japan",
+    "singapore": "Singapore",
+    "seoul": "South Korea",
+    "los angeles": "United States",
+    "toronto": "Canada"
   },
   "country_to_cities": {
     "Sweden": [
@@ -136,26 +217,59 @@
       "Ronneby",
       "Kiruna",
       "Skellefteå",
-      "Sundsvall"
+      "Sundsvall",
+      "Arlanda",
+      "Bromma",
+      "Landvetter",
+      "Åre Östersund",
+      "Arvidsjaur",
+      "Gällivare",
+      "Halmstad",
+      "Hemavan",
+      "Hemavan Tärnaby",
+      "Kalmar",
+      "Karlstad",
+      "Kramfors",
+      "Pajala",
+      "Sveg",
+      "Torsby",
+      "Vilhelmina",
+      "Ängelholm",
+      "Örnsköldsvik",
+      "Mora",
+      "Linköping",
+      "Örebro",
+      "Norrköping",
+      "Växjö",
+      "Kristianstad",
+      "Borlänge",
+      "Trollhättan"
     ],
     "Norway": [
       "Oslo",
       "Bergen",
       "Trondheim",
       "Stavanger",
-      "Tromsø"
+      "Tromsø",
+      "Tromso",
+      "Tromsö"
     ],
     "Denmark": [
       "Copenhagen",
       "Köpenhamn",
       "Billund",
-      "Aalborg"
+      "Aalborg",
+      "Aarhus"
     ],
     "Finland": [
       "Helsinki",
       "Helsingfors",
       "Turku",
-      "Rovaniemi"
+      "Rovaniemi",
+      "Mariehamn",
+      "Vaasa",
+      "Vasa",
+      "Åbo"
     ],
     "Iceland": [
       "Reykjavik",
@@ -182,7 +296,8 @@
     "Belgium": [
       "Brussels",
       "Bryssel",
-      "Antwerp"
+      "Antwerp",
+      "Charleroi"
     ],
     "Germany": [
       "Berlin",
@@ -203,7 +318,8 @@
       "Zürich",
       "Geneva",
       "Genève",
-      "Basel"
+      "Basel",
+      "Geneve"
     ],
     "Spain": [
       "Madrid",
@@ -214,7 +330,13 @@
       "Alicante",
       "Las Palmas",
       "Tenerife",
-      "Ibiza"
+      "Ibiza",
+      "Gran Canaria",
+      "Teneriffa",
+      "Palma",
+      "Fuerteventura",
+      "Lanzarote",
+      "Sevilla"
     ],
     "Italy": [
       "Rome",
@@ -261,7 +383,9 @@
       "Kraków",
       "Gdansk",
       "Gdańsk",
-      "Wroclaw"
+      "Wroclaw",
+      "Poznan",
+      "Katowice"
     ],
     "Czech Republic": [
       "Prague",
@@ -271,10 +395,12 @@
       "Budapest"
     ],
     "Romania": [
-      "Bucharest"
+      "Bucharest",
+      "Bukarest"
     ],
     "Serbia": [
-      "Belgrade"
+      "Belgrade",
+      "Belgrad"
     ],
     "Croatia": [
       "Zagreb",
@@ -302,11 +428,91 @@
     "United States": [
       "New York",
       "Chicago",
-      "Miami"
+      "Miami",
+      "Los Angeles"
     ],
     "Egypt": [
       "Cairo",
-      "Hurghada"
+      "Hurghada",
+      "Kairo",
+      "Sharm El Sheikh"
+    ],
+    "Ireland": [
+      "Dublin"
+    ],
+    "North Macedonia": [
+      "Skopje"
+    ],
+    "Albania": [
+      "Tirana"
+    ],
+    "Bosnia and Herzegovina": [
+      "Banja Luka",
+      "Sarajevo"
+    ],
+    "Kosovo": [
+      "Pristina"
+    ],
+    "Montenegro": [
+      "Podgorica"
+    ],
+    "Bulgaria": [
+      "Sofia",
+      "Varna",
+      "Burgas"
+    ],
+    "Malta": [
+      "Malta",
+      "Valletta"
+    ],
+    "Luxembourg": [
+      "Luxembourg",
+      "Luxemburg"
+    ],
+    "Cyprus": [
+      "Larnaca",
+      "Paphos"
+    ],
+    "Ethiopia": [
+      "Addis Abeba",
+      "Addis Ababa"
+    ],
+    "Morocco": [
+      "Agadir",
+      "Marrakech",
+      "Casablanca"
+    ],
+    "Jordan": [
+      "Amman"
+    ],
+    "Lebanon": [
+      "Beirut"
+    ],
+    "Israel": [
+      "Tel Aviv"
+    ],
+    "Cape Verde": [
+      "Boa Vista",
+      "Sal"
+    ],
+    "China": [
+      "Beijing",
+      "Peking",
+      "Shanghai"
+    ],
+    "Japan": [
+      "Tokyo"
+    ],
+    "Singapore": [
+      "Singapore"
+    ],
+    "South Korea": [
+      "Seoul"
+    ],
+    "Canada": [
+      "Toronto"
     ]
-  }
+  },
+  "total_cities": 203,
+  "total_countries": 52
 }
