@@ -159,30 +159,62 @@ def _format_status(flight: dict, is_departure: bool = True) -> str:
     if leg_status == "DEL":
         return "Borttaget"
 
-    # Faktisk avgång eller ankomst har företräde framför gamla gate-statusar
+    rem_texts = [r.get("text", "").strip() for r in flight.get("remarksSwedish", []) if r.get("text")]
+    has_sista = any("sista bagage" in t.lower() for t in rem_texts)
+    has_forsta = any("första bagage" in t.lower() for t in rem_texts)
+    is_approach = any("inkommande" in t.lower() for t in rem_texts)
+
+    # Faktisk avgång har företräde
     if is_departure and (leg_status == "ACT" or actual_dt):
         return f"Lyfte kl. {actual_dt:%H:%M}" if actual_dt else "Har lyft"
-    if not is_departure and (leg_status in ("ACT", "LAN") or actual_dt):
-        return f"Landade kl. {actual_dt:%H:%M}" if actual_dt else "Har landat"
 
+    # För ankomster: visa landning och bagagestatus
+    if not is_departure:
+        if leg_status in ("ACT", "LAN") or actual_dt:
+            land_time = f"Landade kl. {actual_dt:%H:%M}" if actual_dt else "Landat"
+            if has_sista:
+                return f"{land_time} · Sista bagage levererat"
+            elif has_forsta:
+                return f"{land_time} · Första bagage på bandet"
+            return land_time
+
+        parts = []
+        if is_approach:
+            parts.append("Inkommande")
+        if estimated_dt and scheduled_dt:
+            diff_min = int((estimated_dt - scheduled_dt).total_seconds() / 60)
+            if diff_min >= 5:
+                parts.append(f"Försenad till {estimated_dt:%H:%M} (+{diff_min} min)")
+            elif diff_min <= -5:
+                parts.append(f"Tidig · Beräknad {estimated_dt:%H:%M}")
+            else:
+                parts.append(f"I tid · Ankommer {estimated_dt:%H:%M}")
+        else:
+            ank_rem = [t for t in rem_texts if "ankommer" in t.lower() or "beräknad" in t.lower()]
+            if ank_rem:
+                parts.append(ank_rem[0])
+            else:
+                parts.append("I tid")
+        return " · ".join(parts)
+
+    # För avgångar
     parts = []
     if estimated_dt and scheduled_dt:
         diff_min = int((estimated_dt - scheduled_dt).total_seconds() / 60)
         if diff_min >= 5:
             parts.append(f"Försenad till {estimated_dt:%H:%M} (+{diff_min} min)")
         elif diff_min <= -5:
-            parts.append(f"Ny tid {estimated_dt:%H:%M} ({diff_min} min)")
+            parts.append(f"Ny tid {estimated_dt:%H:%M}")
 
-    if is_departure:
-        gate_labels = {
-            "B": "Bordas",
-            "F": "Sista utrop",
-            "I": "Gå till gate",
-            "C": "Gate stängd",
-            "O": "Gate öppen",
-        }
-        if gate_action in gate_labels:
-            parts.append(gate_labels[gate_action])
+    gate_labels = {
+        "B": "Bordas",
+        "F": "Sista utrop",
+        "I": "Gå till gate",
+        "C": "Gate stängd",
+        "O": "Gate öppen",
+    }
+    if gate_action in gate_labels:
+        parts.append(gate_labels[gate_action])
 
     if not parts:
         raw_status = loc.get("flightLegStatusSwedish") or ""
@@ -244,30 +276,25 @@ def _print_flight(flight: dict, index: int, home_airport: str | None = None, is_
     status_se = _format_status(flight, is_departure=is_departure)
     terminal = loc.get("terminal") or "-"
     gate = loc.get("gate") or "-"
-    belt = bag.get("belt") or bag.get("claim") or "-"
+    belt = bag.get("baggageClaimUnit") or bag.get("belt") or bag.get("claim") or "-"
 
     sched_dt = _parse_local_time(times.get("scheduledUtc"))
     est_dt = _get_estimated_local(flight, is_departure=is_departure)
     actual_dt = _parse_local_time(times.get("actualUtc"))
 
-    sched_str = _fmt_time(times.get("scheduledUtc"))
-    actual_str = _fmt_time(times.get("actualUtc"))
+    sched_str = f"{sched_dt:%H:%M} CET" if sched_dt else "-"
+    actual_str = f"{actual_dt:%H:%M} CET" if actual_dt else "-"
 
     est_str = "-"
     diff_label = ""
+    diff_min = 0
     if est_dt and sched_dt:
         diff_min = int((est_dt - sched_dt).total_seconds() / 60)
         if diff_min >= 5:
-            diff_label = f" (+{diff_min} min försenad)"
+            diff_label = f" (+{diff_min} min)"
         elif diff_min <= -5:
             diff_label = f" ({diff_min} min)"
-
-        est_utc = times.get("estimatedUtc")
-        if est_utc:
-            est_str = _fmt_time(est_utc)
-        else:
-            tz_name = est_dt.strftime("%Z") or "CET"
-            est_str = f"{est_dt.strftime('%H:%M')} {tz_name}"
+        est_str = f"{est_dt:%H:%M} CET"
 
     if is_departure:
         raw_dest = flight.get("arrivalAirportSwedish") or flight.get("arrivalAirportEnglish") or "Okänd"
@@ -286,14 +313,17 @@ def _print_flight(flight: dict, index: int, home_airport: str | None = None, is_
     print(f"  Från       : {from_str}")
     print(f"  Till       : {to_str}")
     print(f"  Tidtabell  : {sched_str}")
-    if est_str != "-" and diff_label:
+    if est_dt and diff_min != 0:
         print(f"  Ny tid     : {est_str}{diff_label}")
     if actual_str != "-":
-        print(f"  Faktisk    : {actual_str}")
+        act_label = "Lyfte" if is_departure else "Landade"
+        print(f"  {act_label:<10} : {actual_str}")
     print(f"  Status     : {status_se}")
-    print(f"  Terminal   : {terminal:<4}  Gate: {gate}")
-    if not is_departure and belt != "-":
-        print(f"  Bagageband : {belt}")
+    if is_departure:
+        print(f"  Terminal   : {terminal:<4}  Gate: {gate}")
+    else:
+        belt_str = f"Band {belt}" if belt != "-" else "Ej tilldelat"
+        print(f"  Terminal   : {terminal:<4}  Bagageband: {belt_str}")
 
 def _print_flights_paged(flights: list[dict], home_airport: str | None = None, is_departure: bool = False) -> None:
     """Skriver ut flyg paginerat (PAGE_SIZE åt gången) med interaktiv meny."""
@@ -387,19 +417,23 @@ def option_arrivals():
             continue
 
         if only_upcoming:
-            # Ta bort ankomster som landade för mer än 15 min sedan (precis som på Swedavias skärm)
             times = f.get("arrivalTime", {})
             actual_dt = _parse_local_time(times.get("actualUtc"))
-            if status in ("ACT", "LAN") and actual_dt:
-                if (now_se - actual_dt).total_seconds() > 900:  # > 15 min sedan landning
-                    continue
-            else:
-                # Plan som inte landat än: kolla beräknad eller tidtabellstid
-                est_dt = _get_estimated_local(f, is_departure=False)
-                sched_dt = _parse_local_time(times.get("scheduledUtc"))
-                eff_dt = est_dt or sched_dt
-                if eff_dt and (eff_dt - now_se).total_seconds() < -900:
-                    continue
+            rem_texts = [r.get("text", "").strip().lower() for r in f.get("remarksSwedish", []) if r.get("text")]
+            has_sista = any("sista bagage" in t for t in rem_texts)
+
+            # Swedavias webbtavla visar BARA plan som är i luften / på väg in.
+            # Så fort ett plan har landat tas det bort från webbens ankomsttavla.
+            if status in ("ACT", "LAN") or actual_dt:
+                continue
+
+            # Plan som inte landat än: kolla beräknad eller tidtabellstid
+            est_dt = _get_estimated_local(f, is_departure=False)
+            sched_dt = _parse_local_time(times.get("scheduledUtc"))
+            eff_dt = est_dt or sched_dt
+            # Ignorera gamla flyg som borde ha kommit för mer än 30 min sen utan uppdatering
+            if eff_dt and (eff_dt - now_se).total_seconds() < -1800:
+                continue
 
         filtered.append(f)
 
